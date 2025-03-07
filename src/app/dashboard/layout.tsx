@@ -1,4 +1,6 @@
 import { AppBar } from '@/components/app-bar';
+import { AppSidebar } from '@/components/app-side-bar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 export default function RootLayout({
   children,
@@ -6,9 +8,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="h-screen w-screen flex flex-col">
-      <AppBar />
-      <div className="flex-1">{children}</div>
-    </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <div className="w-full flex flex-col">
+        <AppBar />
+        <div className="flex-1">{children}</div>
+      </div>
+    </SidebarProvider>
   );
 }
