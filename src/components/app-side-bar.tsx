@@ -15,17 +15,17 @@ import {
 const items = [
   {
     title: 'Upcoming Events',
-    url: '#',
+    url: '/dashboard/upcoming',
     icon: Home,
   },
   {
     title: 'Past Events',
-    url: '#',
+    url: '/dashboard/past',
     icon: Inbox,
   },
   {
     title: 'Settings',
-    url: '#',
+    url: '/dashboard/settings',
     icon: Settings,
   },
 ];
@@ -33,7 +33,7 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarContent className='px-4'>
+      <SidebarContent className="px-4">
         <SidebarGroup className="py-4">
           <SidebarGroupLabel className="font-black text-2xl text-[var(--primary)]">
             KETERO
