@@ -33,7 +33,7 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarContent>
+      <SidebarContent className='px-4'>
         <SidebarGroup className="py-4">
           <SidebarGroupLabel className="font-black text-2xl text-[var(--primary)]">
             KETERO
