@@ -35,7 +35,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent className="px-4">
         <SidebarGroup className="py-4">
-          <SidebarGroupLabel className="font-black text-2xl text-[var(--primary)]">
+          <SidebarGroupLabel className="font-black text-2xl text-[var(--primary)] font-mono">
             KETERO
           </SidebarGroupLabel>
           <div className="py-2"></div>

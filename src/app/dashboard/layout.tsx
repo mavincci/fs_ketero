@@ -12,7 +12,7 @@ export default function RootLayout({
       <AppSidebar />
       <div className="w-full flex flex-col">
         <AppBar />
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 px-8 py-4">{children}</div>
       </div>
     </SidebarProvider>
   );
