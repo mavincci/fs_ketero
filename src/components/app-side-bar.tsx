@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
+import { Calendar, Home, Inbox, Plus, Search, Settings } from 'lucide-react';
 
 import {
   Sidebar,
@@ -13,6 +13,11 @@ import {
 
 // Menu items.
 const items = [
+  {
+    title: 'New Event',
+    url: '/dashboard/new_event',
+    icon: Plus,
+  },
   {
     title: 'Upcoming Events',
     url: '/dashboard/upcoming',
