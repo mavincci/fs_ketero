@@ -14,6 +14,14 @@ import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { EventType } from '@/models/event-type';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const formSchema = z.object({
   name: z.string().min(5, {
@@ -22,9 +30,7 @@ const formSchema = z.object({
   title: z.string().min(5, {
     message: 'Title must be at least 3 characters.',
   }),
-  eventType: z.string().min(5, {
-    message: 'Title must be at least 3 characters.',
-  }),
+  eventType: z.nativeEnum(EventType),
   startTime: z.string().min(5, {
     message: 'Title must be at least 3 characters.',
   }),
@@ -42,7 +48,7 @@ export default function Upcoming() {
     defaultValues: {
       name: '',
       title: '',
-      eventType: '',
+      eventType: EventType.public,
       startTime: '',
       endTime: '',
       location: '',
@@ -65,7 +71,7 @@ export default function Upcoming() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel className="mb-2">Name</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -79,7 +85,7 @@ export default function Upcoming() {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel className="mb-2">Title</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -93,11 +99,21 @@ export default function Upcoming() {
               name="eventType"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Type</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  {/* <FormDescription></FormDescription> */}
+                  <FormLabel className="mb-2">Type</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl className="w-full">
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {[EventType.private, EventType.public].map((et) => (
+                        <SelectItem value={et}>
+                          {et.charAt(0).toUpperCase().concat(et.substring(1))}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
@@ -107,7 +123,7 @@ export default function Upcoming() {
               name="location"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Location</FormLabel>
+                  <FormLabel className="mb-2">Location</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -121,7 +137,7 @@ export default function Upcoming() {
               name="startTime"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Start Time</FormLabel>
+                  <FormLabel className="mb-2">Start Time</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -135,7 +151,7 @@ export default function Upcoming() {
               name="endTime"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>End Time</FormLabel>
+                  <FormLabel className="mb-2">End Time</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
